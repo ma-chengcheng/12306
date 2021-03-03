@@ -2,8 +2,8 @@ package service
 
 import (
 	"errors"
-	"github.com/mamachengcheng/12306/services/user/domain/model"
-	"github.com/mamachengcheng/12306/services/user/domain/respository"
+	"github.com/mamachengcheng/12306/srv/user/domain/model"
+	"github.com/mamachengcheng/12306/srv/user/domain/respository"
 	"golang.org/x/crypto/bcrypt"
 )
 

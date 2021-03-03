@@ -1,0 +1,76 @@
+syntax = "proto3";
+
+package user;
+
+option go_package = "proto;user";
+
+service User {
+	rpc Register (RegisterRequest) returns (RegisterReply) {}
+	rpc Login (LoginRequest) returns (LoginReply) {}
+	//  rpc QueryUserInformation (QueryUserInformationRequest) returns (QueryUserInformationReply) {}
+	//  rpc UpdatePassword (UpdatePasswordRequest) returns (UpdatePasswordReply) {}
+	//  rpc AddRegularPassenger (AddRegularPassengerRequest) returns (AddRegularPassengerReply) {}
+	//  rpc QueryRegularPassengers (QueryRegularPassengersRequest) returns (QueryRegularPassengersReply) {}
+	//  rpc UpdateRegularPassenger (UpdateRegularPassengerRequest) returns (UpdateRegularPassengerReply) {}
+	//  rpc DeleteRegularPassenger (DeleteRegularPassengerRequest) returns (DeleteRegularPassengerReply) {}
+}
+
+message RegisterRequest {
+	string Username = 1;
+	string Password = 2;
+	string Email = 3;
+	string MobilePhone = 4;
+	string Name = 5;
+	string Certificate = 6;
+}
+
+message RegisterReply {
+	bool IsSuccess = 1;
+	string msg = 2;
+}
+
+message LoginRequest {
+	string Username = 1;
+	string Password = 2;
+}
+
+message LoginReply {
+	bool IsSuccess = 1;
+	string msg = 2;
+}
+
+//message QueryUserInformationRequest {
+//}
+//
+//message QueryUserInformationReply {
+//}
+//
+//message UpdatePasswordRequest {
+//}
+//
+//message UpdatePasswordReply {
+//}
+//message AddRegularPassengerRequest {
+//}
+//
+//message AddRegularPassengerReply {
+//}
+//
+//message QueryRegularPassengersRequest {
+//}
+//
+//message QueryRegularPassengersReply {
+//}
+//
+//message UpdateRegularPassengerRequest {
+//}
+//
+//message UpdateRegularPassengerReply {
+//}
+//
+//message DeleteRegularPassengerRequest {
+//}
+//
+//message DeleteRegularPassengerReply {
+//}
+
