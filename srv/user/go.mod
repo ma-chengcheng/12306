@@ -1,4 +1,4 @@
-module github.com/mamachengcheng/12306/services/user
+module github.com/mamachengcheng/12306/srv/user
 
 go 1.15
 

@@ -3,13 +3,13 @@ package handler
 import (
 	"context"
 	"errors"
-	"github.com/mamachengcheng/12306/services/user/domain/model"
-	"github.com/mamachengcheng/12306/services/user/domain/service"
+	"github.com/mamachengcheng/12306/srv/user/domain/model"
+	"github.com/mamachengcheng/12306/srv/user/domain/service"
 	"regexp"
 	"strconv"
 	"time"
 
-	user "github.com/mamachengcheng/12306/services/user/proto"
+	user "github.com/mamachengcheng/12306/srv/user/proto"
 )
 
 type User struct {

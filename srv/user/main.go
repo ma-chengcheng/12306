@@ -1,11 +1,11 @@
 package main
 
 import (
-	"github.com/mamachengcheng/12306/services/user/common"
-	"github.com/mamachengcheng/12306/services/user/domain/respository"
-	s "github.com/mamachengcheng/12306/services/user/domain/service"
-	"github.com/mamachengcheng/12306/services/user/handler"
-	user "github.com/mamachengcheng/12306/services/user/proto"
+	"github.com/mamachengcheng/12306/srv/user/common"
+	"github.com/mamachengcheng/12306/srv/user/domain/respository"
+	s "github.com/mamachengcheng/12306/srv/user/domain/service"
+	"github.com/mamachengcheng/12306/srv/user/handler"
+	user "github.com/mamachengcheng/12306/srv/user/proto"
 	"github.com/micro/go-micro/v2"
 	"github.com/micro/go-micro/v2/registry"
 	"github.com/micro/go-plugins/registry/consul/v2"
