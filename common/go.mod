@@ -1,4 +1,4 @@
-module common
+module github.com/mamachengcheng/12306/common
 
 go 1.15
 
