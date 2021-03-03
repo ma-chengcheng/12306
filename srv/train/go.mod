@@ -1,4 +1,4 @@
-module github.com/mamachengcheng/12306/services/train
+module github.com/mamachengcheng/12306/srv/train
 
 go 1.15
 

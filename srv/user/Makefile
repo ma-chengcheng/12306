@@ -19,4 +19,4 @@ test:
 
 .PHONY: docker
 docker:
-	docker build . -t user:latest
+	docker build . -t machengcheng/user:latest

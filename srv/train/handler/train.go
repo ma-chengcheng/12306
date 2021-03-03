@@ -3,7 +3,7 @@ package handler
 import (
 	"context"
 	"github.com/mamachengcheng/12306/services/train/domain/service"
-	train "github.com/mamachengcheng/12306/services/train/proto"
+	train "github.com/mamachengcheng/12306/srv/train/proto"
 )
 
 type Train struct{

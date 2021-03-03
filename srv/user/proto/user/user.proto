@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package user;
 
-option go_package = "proto;user";
+option go_package = "proto;userAPI";
 
 service User {
 	rpc Register (RegisterRequest) returns (RegisterReply) {}
