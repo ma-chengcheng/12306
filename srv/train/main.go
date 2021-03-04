@@ -3,9 +3,9 @@ package main
 import (
 	"github.com/mamachengcheng/12306/services/train/common"
 	"github.com/mamachengcheng/12306/services/train/domain/respository"
-	s "github.com/mamachengcheng/12306/services/train/domain/service"
+	s "github.com/mamachengcheng/12306/srv/train/domain/service"
 	"github.com/mamachengcheng/12306/services/train/handler"
-	train "github.com/mamachengcheng/12306/services/train/proto"
+	train "github.com/mamachengcheng/12306/srv/train/proto"
 	"github.com/micro/go-micro/v2"
 	"github.com/micro/go-micro/v2/registry"
 	"github.com/micro/go-plugins/registry/consul/v2"

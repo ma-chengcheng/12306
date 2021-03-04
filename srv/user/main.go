@@ -28,7 +28,7 @@ func main() {
 
 	// Create service
 	srv := micro.NewService(
-		micro.Name("user"),
+		micro.Name("userAPI"),
 		micro.Version("latest"),
 		micro.Registry(consulRegistry),
 	)

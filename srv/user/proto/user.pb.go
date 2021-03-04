@@ -2,7 +2,7 @@
 // versions:
 // 	protoc-gen-go v1.25.0
 // 	protoc        v3.6.1
-// source: proto/user/user.proto
+// source: proto/userAPI/userAPI.proto
 
 package user
 
@@ -331,16 +331,16 @@ func file_proto_user_user_proto_rawDescGZIP() []byte {
 
 var file_proto_user_user_proto_msgTypes = make([]protoimpl.MessageInfo, 4)
 var file_proto_user_user_proto_goTypes = []interface{}{
-	(*RegisterRequest)(nil), // 0: user.RegisterRequest
-	(*RegisterReply)(nil),   // 1: user.RegisterReply
-	(*LoginRequest)(nil),    // 2: user.LoginRequest
-	(*LoginReply)(nil),      // 3: user.LoginReply
+	(*RegisterRequest)(nil), // 0: userAPI.RegisterRequest
+	(*RegisterReply)(nil),   // 1: userAPI.RegisterReply
+	(*LoginRequest)(nil),    // 2: userAPI.LoginRequest
+	(*LoginReply)(nil),      // 3: userAPI.LoginReply
 }
 var file_proto_user_user_proto_depIdxs = []int32{
-	0, // 0: user.User.Register:input_type -> user.RegisterRequest
-	2, // 1: user.User.Login:input_type -> user.LoginRequest
-	1, // 2: user.User.Register:output_type -> user.RegisterReply
-	3, // 3: user.User.Login:output_type -> user.LoginReply
+	0, // 0: userAPI.User.Register:input_type -> userAPI.RegisterRequest
+	2, // 1: userAPI.User.Login:input_type -> userAPI.LoginRequest
+	1, // 2: userAPI.User.Register:output_type -> userAPI.RegisterReply
+	3, // 3: userAPI.User.Login:output_type -> userAPI.LoginReply
 	2, // [2:4] is the sub-list for method output_type
 	0, // [0:2] is the sub-list for method input_type
 	0, // [0:0] is the sub-list for extension type_name

@@ -1,11 +1,84 @@
 version: "3"
 services:
-#  etcd:
-#    image: bitnami/etcd:latest
-#    environment:
-#      - ALLOW_NONE_AUTHENTICATION=yes
-
   consul:
     image: consul:latest
     ports:
       - "8500:8500"
+
+  redis:
+    image: redis:latest
+    network_mode: "bridge"
+    volumes:
+      - "./database/redis/data:/database"
+    ports:
+      - "6379:6379"
+
+  mysql:
+    image: mysql:latest
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: 123456
+      MYSQL_USER: 'test'
+      MYSQL_PASS: '123456'
+      MYSQL_DATABASE: 12306
+      TZ: Asia/Shanghai
+    volumes:
+      - "./database/mysql/db:/var/lib/mysql"
+      - "./database/mysql/my.cnf:/etc/my.cnf"
+      - "./database/mysql/init:/docker-entrypoint-initdb.d/"
+    ports:
+      - "3306:3306"
+
+  rmqnamesrv:
+    image: foxiswho/rocketmq:server
+    container_name: rmqnamesrv
+    ports:
+      - 9876:9876
+    volumes:
+      - ./database/rmq/logs:/opt/logs
+      - ./database/rmq/store:/opt/store
+    networks:
+      rmq:
+        aliases:
+          - rmqnamesrv
+
+  rmqbroker:
+    image: foxiswho/rocketmq:broker
+    container_name: rmqbroker
+    ports:
+      - 10909:10909
+      - 10911:10911
+    volumes:
+      - ./database/rmq/logs:/opt/logs
+      - ./database/rmq/store:/opt/store
+      - ./database/rmq/broker.conf:/etc/rocketmq/broker.conf
+    environment:
+      NAMESRV_ADDR: "rmqnamesrv:9876"
+      JAVA_OPTS: " -Duser.home=/opt"
+      JAVA_OPT_EXT: "-server -Xms128m -Xmx128m -Xmn128m"
+    command: mqbroker -c /etc/rocketmq/broker.conf
+    depends_on:
+      - rmqnamesrv
+    networks:
+      rmq:
+        aliases:
+          - rmqbroker
+
+  rmqconsole:
+    image: styletang/rocketmq-console-ng
+    container_name: rmqconsole
+    ports:
+      - 8080:8080
+    environment:
+      JAVA_OPTS: "-Drocketmq.namesrv.addr=rmqnamesrv:9876 -Dcom.rocketmq.sendMessageWithVIPChannel=false"
+    depends_on:
+      - rmqnamesrv
+    networks:
+      rmq:
+        aliases:
+          - rmqconsole
+
+networks:
+  rmq:
+    name: rmq
+    driver: bridge
