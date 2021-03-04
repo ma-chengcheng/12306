@@ -1,6 +1,6 @@
 package service
 
-import "github.com/mamachengcheng/12306/services/ticket/domain/respository"
+import "github.com/mamachengcheng/12306/srv/ticket/domain/respository"
 
 type ITicketDataService interface {
 }

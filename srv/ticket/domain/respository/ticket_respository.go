@@ -1,7 +1,7 @@
 package respository
 
 import (
-	"github.com/mamachengcheng/12306/services/ticket/domain/model"
+	"github.com/mamachengcheng/12306/srv/ticket/domain/model"
 	"gorm.io/gorm"
 )
 
