@@ -5,11 +5,10 @@ import (
 	"errors"
 	"github.com/mamachengcheng/12306/srv/user/domain/model"
 	"github.com/mamachengcheng/12306/srv/user/domain/service"
+	"github.com/mamachengcheng/12306/srv/user/proto/user"
 	"regexp"
 	"strconv"
 	"time"
-
-	user "github.com/mamachengcheng/12306/srv/user/proto"
 )
 
 type User struct {
