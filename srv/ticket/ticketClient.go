@@ -2,7 +2,7 @@ package main
 
 import (
 	"context"
-	go_micro_service_ticket "github.com/mamachengcheng/12306/srv/ticket/proto/ticket"
+	goMicroServiceTicket "github.com/mamachengcheng/12306/srv/ticket/proto/ticket"
 	"github.com/micro/go-micro/v2"
 	"github.com/micro/go-micro/v2/registry"
 	"github.com/micro/go-plugins/registry/consul/v2"
@@ -22,9 +22,9 @@ func main() {
 		micro.Registry(consulRegistry),
 	)
 
-	ticketService := go_micro_service_ticket.NewTicketService("go.micro.service.ticket", srv.Client())
+	ticketService := goMicroServiceTicket.NewTicketService("go.micro.service.ticket", srv.Client())
 
-	reply, err :=  ticketService.BookTickets(context.TODO(), &go_micro_service_ticket.BookTicketsRequest{
+	reply, err :=  ticketService.BookTickets(context.TODO(), &goMicroServiceTicket.BookTicketsRequest{
 		OrderID:     0,
 		ScheduleID:  0,
 		SeatType:    0,
