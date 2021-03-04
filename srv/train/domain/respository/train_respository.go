@@ -3,15 +3,14 @@ package respository
 import (
 	"github.com/mamachengcheng/12306/services/train/domain/model"
 	"gorm.io/gorm"
-	"time"
 )
 
 type ITrainRepository interface {
 	InitTable() error
 	GetStationList(string) ([]model.Station, error)
 	SearchStation(string) ([]model.Station, error)
-	GetScheduleList(string, int64, int64) ([]model.Schedule, error)
-	GetStop(string) ([]model.Stop, error)
+	GetScheduleList(int64) ([]model.Schedule, error)
+	GetStop(int64) ([]model.Stop, error)
 }
 
 func NewTrainRepository(db *gorm.DB) ITrainRepository {
@@ -34,13 +33,13 @@ func (u *TrainRepository) GetStationList(initialName string) ([]model.Station, e
 	return stations, u.mysqlDB.Where("initial_name = ?", initialName).Find(&stations).Error
 }
 
-func (u *TrainRepository) GetScheduleList(startDate string, startStationID, endStationID int64) ([]model.Schedule, error) {
+
+func (u *TrainRepository) GetScheduleList(scheduleID int64) ([]model.Schedule, error) {
 	var schedules []model.Schedule
-	startTime, _ := time.ParseInLocation("2006-01-02", startDate, time.Local)
-	return schedules, u.mysqlDB.Preload("StartStation").Preload("EndStation").Where("start_time >= ? AND end_time < ?", startTime, startTime.Add(time.Hour*24)).Where("start_station_refer = ? AND end_station_refer = ?", startStationID, endStationID).Find(&schedules).Error
+	return schedules, u.mysqlDB.Where("schedule_id = ?", scheduleID).Find(&schedules).Error
 }
 
-func (u *TrainRepository) GetStop(scheduleID string) ([]model.Stop, error) {
+func (u *TrainRepository) GetStop(scheduleID int64) ([]model.Stop, error) {
 	var stops []model.Stop
 	var schedule model.Schedule
 	var train model.Train
