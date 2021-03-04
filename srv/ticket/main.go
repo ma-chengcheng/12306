@@ -1,9 +1,10 @@
 package main
 
 import (
-	"github.com/mamachengcheng/12306/services/ticket/domain/respository"
+	common "github.com/mamachengcheng/12306/common"
+	"github.com/mamachengcheng/12306/srv/ticket/domain/respository"
 	s "github.com/mamachengcheng/12306/srv/ticket/domain/service"
-	"github.com/mamachengcheng/12306/services/ticket/handler"
+	"github.com/mamachengcheng/12306/srv/ticket/handler"
 	ticket "github.com/mamachengcheng/12306/srv/ticket/proto"
 	"github.com/micro/go-micro/v2"
 	"github.com/micro/go-micro/v2/registry"
@@ -12,6 +13,7 @@ import (
 )
 
 func main() {
+	//consulConfig,err := common.GetConsulConfig("127.0.0.1",8500,"/micro/config")
 
 	//if err != nil {
 	//	log.Fatalf("Open MySQL database: %v", err)
