@@ -101,3 +101,22 @@ func (u *User) Login(ctx context.Context, in *user.LoginRequest, out *user.Login
 
 	return nil
 }
+
+func (u *User) QueryUserInformation(context.Context, *user.QueryUserInformationRequest, *user.QueryUserInformationReply) error {
+	return nil
+}
+func (u *User) UpdatePassword(context.Context, *user.UpdatePasswordRequest, *user.UpdatePasswordReply) error {
+	return nil
+}
+func (u *User) AddRegularPassenger(context.Context, *user.AddRegularPassengerRequest, *user.AddRegularPassengerReply) error {
+	return nil
+}
+func (u *User) QueryRegularPassengers(context.Context, *user.QueryRegularPassengersRequest, *user.QueryRegularPassengersReply) error {
+	return nil
+}
+func (u *User) UpdateRegularPassenger(context.Context, *user.UpdateRegularPassengerRequest, *user.UpdateRegularPassengerReply) error {
+	return nil
+}
+func (u *User) DeleteRegularPassenger(context.Context, *user.DeleteRegularPassengerRequest, *user.DeleteRegularPassengerReply) error {
+	return nil
+}

@@ -7,12 +7,12 @@ option go_package = "proto;user";
 service User {
 	rpc Register (RegisterRequest) returns (RegisterReply) {}
 	rpc Login (LoginRequest) returns (LoginReply) {}
-	//  rpc QueryUserInformation (QueryUserInformationRequest) returns (QueryUserInformationReply) {}
-	//  rpc UpdatePassword (UpdatePasswordRequest) returns (UpdatePasswordReply) {}
-	//  rpc AddRegularPassenger (AddRegularPassengerRequest) returns (AddRegularPassengerReply) {}
-	//  rpc QueryRegularPassengers (QueryRegularPassengersRequest) returns (QueryRegularPassengersReply) {}
-	//  rpc UpdateRegularPassenger (UpdateRegularPassengerRequest) returns (UpdateRegularPassengerReply) {}
-	//  rpc DeleteRegularPassenger (DeleteRegularPassengerRequest) returns (DeleteRegularPassengerReply) {}
+	rpc QueryUserInformation (QueryUserInformationRequest) returns (QueryUserInformationReply) {}
+	rpc UpdatePassword (UpdatePasswordRequest) returns (UpdatePasswordReply) {}
+	rpc AddRegularPassenger (AddRegularPassengerRequest) returns (AddRegularPassengerReply) {}
+	rpc QueryRegularPassengers (QueryRegularPassengersRequest) returns (QueryRegularPassengersReply) {}
+	rpc UpdateRegularPassenger (UpdateRegularPassengerRequest) returns (UpdateRegularPassengerReply) {}
+	rpc DeleteRegularPassenger (DeleteRegularPassengerRequest) returns (DeleteRegularPassengerReply) {}
 }
 
 message RegisterRequest {
@@ -39,38 +39,84 @@ message LoginReply {
 	string msg = 2;
 }
 
-//message QueryUserInformationRequest {
-//}
-//
-//message QueryUserInformationReply {
-//}
-//
-//message UpdatePasswordRequest {
-//}
-//
-//message UpdatePasswordReply {
-//}
-//message AddRegularPassengerRequest {
-//}
-//
-//message AddRegularPassengerReply {
-//}
-//
-//message QueryRegularPassengersRequest {
-//}
-//
-//message QueryRegularPassengersReply {
-//}
-//
-//message UpdateRegularPassengerRequest {
-//}
-//
-//message UpdateRegularPassengerReply {
-//}
-//
-//message DeleteRegularPassengerRequest {
-//}
-//
-//message DeleteRegularPassengerReply {
-//}
+message QueryUserInformationRequest {
+	string Username = 1;
+}
+
+message QueryUserInformationReply {
+	int64 ID = 1;
+	string Name = 2;
+	int64 CertificateType = 3;
+	bool Sex = 4;
+	string Birthday = 5;
+	string Country = 6;
+	string CertificateDeadline = 7;
+	string Certificate = 8;
+	int64 PassengerType = 9;
+	string MobilePhone = 10;
+	int64 CheckStatus = 11;
+	int64 UserStatus = 12;
+	int64 UserID = 13;
+}
+
+message UpdatePasswordRequest {
+	string Username = 1;
+	string Password = 2;
+}
+
+message UpdatePasswordReply {
+	bool IsSuccess = 1;
+	string msg = 2;
+}
+
+message AddRegularPassengerRequest {
+	string Username = 1;
+	string Certificate = 2;
+	string name = 3;
+	string MobilePhone = 4;
+}
+
+message AddRegularPassengerReply {
+	bool IsSuccess = 1;
+	string msg = 2;
+}
+
+message QueryRegularPassengersRequest {
+	string Username = 1;
+}
+
+message Passenger {
+	string CertificateType = 1;
+	string Name = 2;
+	string Certificate = 3;
+	string PassengerType = 4;
+	string CheckStatus = 5;
+	string CreateDate = 6;
+	string MobilePhone = 7;
+}
+
+message QueryRegularPassengersReply {
+	repeated Passenger PassengerList = 1;
+}
+
+message UpdateRegularPassengerRequest {
+	string Username = 1;
+	string PassengerID = 2;
+	string MobilePhone = 3;
+	string PassengerType = 4;
+}
+
+message UpdateRegularPassengerReply {
+	bool IsSuccess = 1;
+	string msg = 2;
+}
+
+message DeleteRegularPassengerRequest {
+	string PassengerID = 1;
+}
+
+message DeleteRegularPassengerReply {
+	bool IsSuccess = 1;
+	string msg = 2;
+}
 
