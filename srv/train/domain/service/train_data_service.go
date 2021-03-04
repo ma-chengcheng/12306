@@ -1,8 +1,8 @@
 package service
 
 import (
-	"github.com/mamachengcheng/12306/services/train/domain/respository"
-	train "github.com/mamachengcheng/12306/services/train/proto"
+	"github.com/mamachengcheng/12306/srv/train/domain/respository"
+	train "github.com/mamachengcheng/12306/srv/train/proto"
 )
 
 type ITrainDataService interface {

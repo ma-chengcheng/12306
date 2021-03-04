@@ -2,7 +2,7 @@ package handler
 
 import (
 	"context"
-	"github.com/mamachengcheng/12306/services/train/domain/service"
+	"github.com/mamachengcheng/12306/srv/train/domain/service"
 	train "github.com/mamachengcheng/12306/srv/train/proto"
 )
 

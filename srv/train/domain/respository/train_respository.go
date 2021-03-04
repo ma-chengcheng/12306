@@ -1,7 +1,7 @@
 package respository
 
 import (
-	"github.com/mamachengcheng/12306/services/train/domain/model"
+	"github.com/mamachengcheng/12306/srv/train/domain/model"
 	"gorm.io/gorm"
 )
 
