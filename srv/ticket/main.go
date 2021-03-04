@@ -30,7 +30,7 @@ func main() {
 
 	// Create service
 	srv := micro.NewService(
-		micro.Name("userAPI"),
+		micro.Name("go.micro.service.ticket"),
 		micro.Version("latest"),
 		micro.Registry(consulRegistry),
 	)
