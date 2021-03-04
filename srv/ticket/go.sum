@@ -342,6 +342,8 @@ github.com/magiconair/properties v1.8.1/go.mod h1:PppfXfuXeibc/6YijjN8zIbojt8czP
 github.com/mamachengcheng/12306 v0.0.0-20210303080712-2764034bf7fc h1:KGaETFJu8jQu+NtbInBnBzlJzY+huQO3KXqYLEcjz8U=
 github.com/mamachengcheng/12306 v0.0.1 h1:n4eGxE32VjRUzzEzNZ9Gm8DVJaoEJvNEL0fGIxh0w+Y=
 github.com/mamachengcheng/12306/common v0.0.0-20210303153101-c443ea2ed2c0/go.mod h1:ixDHH5NeHq4wwttIhCOVhJeRL83Y2f6vm7n9xOYWHgI=
+github.com/mamachengcheng/12306/common v0.0.0-20210303162504-b0e1a3fa8eda h1:YwI3gN8iLHwGl/ejeCgdYm5PGgHbkpt7cskpdaen7hU=
+github.com/mamachengcheng/12306/common v0.0.0-20210303162504-b0e1a3fa8eda/go.mod h1:ixDHH5NeHq4wwttIhCOVhJeRL83Y2f6vm7n9xOYWHgI=
 github.com/marten-seemann/chacha20 v0.2.0/go.mod h1:HSdjFau7GzYRj+ahFNwsO3ouVJr1HFkWoEwNDb4TMtE=
 github.com/marten-seemann/qpack v0.1.0/go.mod h1:LFt1NU/Ptjip0C2CPkhimBz5CGE3WGDAUWqna+CNTrI=
 github.com/marten-seemann/qtls v0.4.1/go.mod h1:pxVXcHHw1pNIt8Qo0pwSYQEoZ8yYOOPXTCZLQQunvRc=
@@ -359,6 +361,7 @@ github.com/micro/cli/v2 v2.1.2 h1:43J1lChg/rZCC1rvdqZNFSQDrGT7qfMrtp6/ztpIkEM=
 github.com/micro/cli/v2 v2.1.2/go.mod h1:EguNh6DAoWKm9nmk+k/Rg0H3lQnDxqzu5x5srOtGtYg=
 github.com/micro/go-micro/v2 v2.9.1 h1:+S9koIrNWARjpP6k2TZ7kt0uC9zUJtNXzIdZTZRms7Q=
 github.com/micro/go-micro/v2 v2.9.1/go.mod h1:x55ZM3Puy0FyvvkR3e0ha0xsE9DFwfPSUMWAIbFY0SY=
+github.com/micro/go-plugins/config/source/consul/v2 v2.9.1 h1:XeRTTccI9y0350tbrPdM68+c3rKJTRJquWRDXTZf4l8=
 github.com/micro/go-plugins/config/source/consul/v2 v2.9.1/go.mod h1:+3+XCOz1MTa6P8nggQ9xa71E63MOsgBygrg38/Xf6Jo=
 github.com/micro/go-plugins/registry/consul/v2 v2.9.1 h1:3IRsR8B9rEsjY4UXvhlkItEi0F/48LBOGdF3J8qLPMY=
 github.com/micro/go-plugins/registry/consul/v2 v2.9.1/go.mod h1:k+12oSCZwN0lYcWeiJ2Y12FWLP02fwJEJk6+EV5n6Io=
