@@ -25,7 +25,7 @@ micro/config/mysql
 {
     "host":"0.0.0.0",
     "port":3306,
-    "username":"root",
+    "user":"root",
     "password":"123456",
     "db":"12306"
 }

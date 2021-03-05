@@ -55,6 +55,6 @@ func main() {
 
 	// Run service
 	if err := srv.Run(); err != nil {
-		log.Fatalf("Open MySQL database: %v", err)
+		log.Fatalf("%v", err)
 	}
 }

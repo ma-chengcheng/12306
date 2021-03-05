@@ -1,22 +1,25 @@
 package main
 
 import (
-	"github.com/mamachengcheng/12306/services/train/common"
-	"github.com/mamachengcheng/12306/services/train/domain/respository"
+	"github.com/mamachengcheng/12306/common"
+	"github.com/mamachengcheng/12306/srv/train/domain/respository"
 	s "github.com/mamachengcheng/12306/srv/train/domain/service"
-	"github.com/mamachengcheng/12306/services/train/handler"
-	train "github.com/mamachengcheng/12306/srv/train/proto"
+	"github.com/mamachengcheng/12306/srv/train/handler"
+	train "github.com/mamachengcheng/12306/srv/train/proto/train"
 	"github.com/micro/go-micro/v2"
 	"github.com/micro/go-micro/v2/registry"
 	"github.com/micro/go-plugins/registry/consul/v2"
+	"gorm.io/driver/mysql"
+	"gorm.io/gorm"
 	"log"
+	"strconv"
 )
 
 func main() {
+	consulConfig, err := common.GetConsulConfig("127.0.0.1", 8500, "/micro/config")
 
-	db, err := common.GetMySqlDB()
 	if err != nil {
-		log.Fatalf("Open MySQL database: %v", err)
+		log.Fatalf("%v", err)
 	}
 
 	consulRegistry := consul.NewRegistry(func(options *registry.Options) {
@@ -27,16 +30,27 @@ func main() {
 
 	// Create service
 	srv := micro.NewService(
-		micro.Name("train"),
+		micro.Name("go.micro.service.train"),
 		micro.Version("latest"),
 		micro.Registry(consulRegistry),
 	)
 	srv.Init()
 
-	trainDataService := s.NewTrainDataService(respository.NewTrainRepository(db))
+	mysqlInfo := common.GetMysqlFromConsul(consulConfig, "mysql")
+	dsn := mysqlInfo.User + ":" + mysqlInfo.Password + "@tcp(" + mysqlInfo.Host + ":" + strconv.FormatInt(mysqlInfo.Port, 10) + ")/" + mysqlInfo.DB + "?charset=utf8mb4&parseTime=True&loc=Local"
+	db, err := gorm.Open(mysql.Open(dsn), &gorm.Config{
+		// 缓存预编译语句
+		PrepareStmt: true,
+	})
+	if err != nil {
+		log.Fatalf("%v", err)
+	}
+
+	ticketDataService := s.NewTrainDataService(respository.NewTrainRepository(db))
 
 	// Register handler
-	train.RegisterTrainHandler(srv.Server(), &handler.Train{TrainDataService: trainDataService})
+
+	train.RegisterTrainHandler(srv.Server(), &handler.Train{TrainDataService: ticketDataService})
 
 	// Run service
 	if err := srv.Run(); err != nil {
