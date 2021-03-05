@@ -32,12 +32,11 @@ func (t *Train) SearchStation(ctx context.Context, in *train2.SearchStationReque
 }
 
 
-// TODO: Request param should not be scheduleID but startDate, startStationID and endStationID
 
 func (t *Train) GetScheduleList(ctx context.Context, in *train2.GetScheduleListRequest, out *train2.GetScheduleListReply) error {
 	out = &train2.GetScheduleListReply{ScheduleList: nil}
 	var err error = nil
-	out.ScheduleList, err = t.TrainDataService.GetScheduleList(in.ScheduleID)
+	out.ScheduleList, err = t.TrainDataService.GetScheduleList(in.StartDate, in.StartStationID, in.EndStationID)
 	if err != nil {
 		return err
 	}
