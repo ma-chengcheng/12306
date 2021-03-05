@@ -273,7 +273,11 @@ type GetScheduleListRequest struct {
 	sizeCache     protoimpl.SizeCache
 	unknownFields protoimpl.UnknownFields
 
-	ScheduleID int64 `protobuf:"varint,1,opt,name=ScheduleID,proto3" json:"ScheduleID,omitempty"`
+
+	// TODO: lack of proto tag
+	StartDate  string `json:"start_date"`
+	StartStationID	int64 `json:"start_station_id"`
+	EndStationID	int64 `json:"end_station_id"`
 }
 
 func (x *GetScheduleListRequest) Reset() {
@@ -308,12 +312,6 @@ func (*GetScheduleListRequest) Descriptor() ([]byte, []int) {
 	return file_proto_train_train_proto_rawDescGZIP(), []int{5}
 }
 
-func (x *GetScheduleListRequest) GetScheduleID() int64 {
-	if x != nil {
-		return x.ScheduleID
-	}
-	return 0
-}
 
 type Schedule struct {
 	state         protoimpl.MessageState

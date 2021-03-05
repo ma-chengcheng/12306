@@ -1,12 +1,9 @@
 package model
 
-import (
-	"gorm.io/gorm"
-	"time"
-)
+import "time"
 
 type Station struct {
-	gorm.Model
+	ID int64 `gorm:"primary_key;not_null;auto_increment"`
 	StationName string `gorm:"not null" json:"station_name"`
 	InitialName string `gorm:"not null" json:"initial_name"`
 	Pinyin      string `gorm:"not null" json:"pinyin"`
@@ -17,12 +14,12 @@ type Station struct {
 }
 
 type Schedule struct {
-	gorm.Model
-	TrainNo   string    `gorm:"not null" json:"train_no"`
-	TrainType string    `gorm:"not null" json:"train_type"`
+	ID int64 `gorm:"primary_key;not_null;auto_increment"`
+	TrainNo   int64    `gorm:"not null" json:"train_no"`
+	TrainType int64    `gorm:"not null" json:"train_type"`
 	StartTime time.Time `gorm:"not null" json:"start_time"`
 	EndTime   time.Time `gorm:"not null" json:"end_time"`
-	Duration  uint      `gorm:"not null" json:"duration"`
+	Duration  string      `gorm:"not null" json:"duration"`
 
 	ScheduleStatus string `gorm:"not null" json:"ticket_status"`
 
@@ -35,7 +32,7 @@ type Schedule struct {
 }
 
 type Seat struct {
-	gorm.Model
+	ID int64 `gorm:"primary_key;not_null;auto_increment"`
 	SeatNo     string `gorm:"not null" json:"seat_no"`
 	CarNumber  uint   `gorm:"not null" json:"car_number"`
 	SeatType   uint   `gorm:"not null" json:"seat_type"`
@@ -45,12 +42,12 @@ type Seat struct {
 }
 
 type Stop struct {
-	gorm.Model
-	No uint `gorm:"not null" json:"no"`
+	ID int64 `gorm:"primary_key;not_null;auto_increment"`
+	No int64 `gorm:"not null" json:"no"`
 
 	StartTime time.Time `gorm:"not null" json:"start_time"`
 	EndTime   time.Time `gorm:"not null" json:"end_time"`
-	Duration  uint      `gorm:"not null" json:"duration"`
+	Duration  int64  `gorm:"not null" json:"duration"`
 
 	StartStation      Station `gorm:"foreignKey:StartStationRefer;not null" json:"start_station"`
 	StartStationRefer uint    // Belongs to Station
@@ -59,7 +56,7 @@ type Stop struct {
 }
 
 type Train struct {
-	gorm.Model
+	ID int64 `gorm:"primary_key;not_null;auto_increment"`
 	Schedules []Schedule `gorm:"foreignKey:TrainRefer" json:"schedules"` // Has Many Schedules
 	Stops     []Stop     `gorm:"foreignKey:TrainRefer" json:"stops"`     // Has Many Stops
 	Seats     []Seat     `gorm:"foreignKey:TrainRefer" json:"seats"`     // Has Many Seats

@@ -3,13 +3,14 @@ package respository
 import (
 	"github.com/mamachengcheng/12306/srv/train/domain/model"
 	"gorm.io/gorm"
+	"time"
 )
 
 type ITrainRepository interface {
 	InitTable() error
 	GetStationList(string) ([]model.Station, error)
 	SearchStation(string) ([]model.Station, error)
-	GetScheduleList(int64) ([]model.Schedule, error)
+	GetScheduleList(string, int64, int64) ([]model.Schedule, error)
 	GetStop(int64) ([]model.Stop, error)
 }
 
@@ -34,9 +35,11 @@ func (u *TrainRepository) GetStationList(initialName string) ([]model.Station, e
 }
 
 
-func (u *TrainRepository) GetScheduleList(scheduleID int64) ([]model.Schedule, error) {
+func (u *TrainRepository) GetScheduleList(startDate string,startStationID, endStationID  int64) ([]model.Schedule, error) {
 	var schedules []model.Schedule
-	return schedules, u.mysqlDB.Where("schedule_id = ?", scheduleID).Find(&schedules).Error
+	startTime, _ := time.ParseInLocation("2006-01-02", startDate, time.Local)
+	err := u.mysqlDB.Preload("StartStation").Preload("EndStation").Where("start_time >= ? AND end_time < ?", startTime, startTime.Add(time.Hour*24)).Where("start_station_refer = ? AND end_station_refer = ?", startStationID, endStationID).Find(&schedules).Error
+	return schedules, err
 }
 
 func (u *TrainRepository) GetStop(scheduleID int64) ([]model.Stop, error) {
