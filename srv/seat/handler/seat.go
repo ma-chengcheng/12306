@@ -2,47 +2,34 @@ package handler
 
 import (
 	"context"
-
-	log "github.com/micro/micro/v3/service/logger"
-
-	seat "seat/proto"
+	"github.com/mamachengcheng/12306/srv/seat/domain/service"
+	seat "github.com/mamachengcheng/12306/srv/seat/proto/seat"
 )
 
-type Seat struct{}
+type Seat struct {
+	SeatDataService service.ISeatDataService
+}
 
-// Call is a single request handler called via client.Call or the generated client code
-func (e *Seat) Call(ctx context.Context, req *seat.Request, rsp *seat.Response) error {
-	log.Info("Received Seat.Call request")
-	rsp.Msg = "Hello " + req.Name
+func (s *Seat) CountRemainingSeats(ctx context.Context, in *seat.CountRemainingSeatsRequest, out *seat.CountRemainingSeatsReply) error {
+	out.Number = s.SeatDataService.CountRemainingSeats(in.SeatType, in.TrainID, in.ScheduleStatus)
 	return nil
 }
 
-// Stream is a server side stream handler called via client.Stream or the generated client code
-func (e *Seat) Stream(ctx context.Context, req *seat.StreamingRequest, stream seat.Seat_StreamStream) error {
-	log.Infof("Received Seat.Stream request with count: %d", req.Count)
+func (s *Seat) GetSeats(ctx context.Context, in *seat.GetSeatsRequest, out *seat.GetSeatsReply) error {
+	seatIDs, err := s.SeatDataService.LockSeats(in.SeatType, in.Number, in.TrainID, in.ScheduleStatus)
 
-	for i := 0; i < int(req.Count); i++ {
-		log.Infof("Responding: %d", i)
-		if err := stream.Send(&seat.StreamingResponse{
-			Count: int64(i),
-		}); err != nil {
-			return err
-		}
+	if err != nil {
+		return err
+	}
+
+	if len(seatIDs) == int(in.Number) {
+		out.SeatIDs = seatIDs
+		out.IsSuccess = true
 	}
 
 	return nil
 }
 
-// PingPong is a bidirectional stream handler called via client.Stream or the generated client code
-func (e *Seat) PingPong(ctx context.Context, stream seat.Seat_PingPongStream) error {
-	for {
-		req, err := stream.Recv()
-		if err != nil {
-			return err
-		}
-		log.Infof("Got ping %v", req.Stroke)
-		if err := stream.Send(&seat.Pong{Stroke: req.Stroke}); err != nil {
-			return err
-		}
-	}
+func (s *Seat) RollbackSeat(ctx context.Context, in *seat.RollbackSeatRequest, out *seat.RollbackSeatReply) error {
+	return nil
 }

@@ -1,54 +1,37 @@
 package service
 
 import (
-	"errors"
-	"github.com/mamachengcheng/12306/srv/user/domain/model"
-	"github.com/mamachengcheng/12306/srv/user/domain/respository"
-	"golang.org/x/crypto/bcrypt"
+	"github.com/mamachengcheng/12306/srv/seat/domain/respository"
 )
 
-type IUserDataService interface {
-	AddUser(*model.User) (int64, error)
-	CheckPassword(username string, pwd string) (isOk bool, err error)
+type ISeatDataService interface {
+	CountRemainingSeats(seatType uint32, trainID, scheduleStatus uint64) uint32
+	LockSeats(seatType, number uint32, trainID, scheduleStatus uint64) ([]uint64, error)
+	ReleaseSeat(seatID, scheduleStatus uint64) error
 }
 
-func NewUserDataService(userRepository respository.IUserRepository) IUserDataService {
-	return &UserDataService{UserRepository: userRepository}
+func NewSeatDataService(userRepository respository.ISeatRepository) ISeatDataService {
+	return &SeatDataService{SeatRepository: userRepository}
 }
 
-type UserDataService struct {
-	UserRepository respository.IUserRepository
+type SeatDataService struct {
+	SeatRepository respository.ISeatRepository
 }
 
-func GeneratePassword(userPassword string) ([]byte, error) {
-	return bcrypt.GenerateFromPassword([]byte(userPassword), bcrypt.DefaultCost)
+func (s *SeatDataService) CountRemainingSeats(seatType uint32, trainID, scheduleStatus uint64) (number uint32) {
+	seats, _ := s.SeatRepository.FindSeats(seatType, trainID, scheduleStatus)
+	return uint32(len(seats))
 }
 
-func (u *UserDataService) AddUser(user *model.User) (int64, error) {
-	pwdByte, err := GeneratePassword(user.Password)
-
+func (s *SeatDataService) LockSeats(seatType, number uint32, trainID, scheduleStatus uint64) (seatsID []uint64, err error) {
+	seats, err := s.SeatRepository.FindSeats(seatType, trainID, scheduleStatus)
 	if err != nil {
-		return user.ID, err
+		return seatsID, err
 	}
-
-	user.Password = string(pwdByte)
-
-	return u.UserRepository.CreateUser(user)
+	return s.SeatRepository.UpdateSeats(number, seats, scheduleStatus)
 }
 
-func ValidatePassword(userPassword string, hashed string) (isSuccess bool, err error) {
-	if err = bcrypt.CompareHashAndPassword([]byte(hashed), []byte(userPassword)); err != nil {
-		return false, errors.New("IncorrectPassword")
-	}
-	return true, nil
-}
-
-func (u *UserDataService) CheckPassword(username string, password string) (isSuccess bool, err error) {
-	user, err := u.UserRepository.FindUserByUsername(username)
-
-	if err != nil {
-		return false, err
-	}
-
-	return ValidatePassword(password, user.Password)
+func (s *SeatDataService) ReleaseSeat(seatID, scheduleStatus uint64) error {
+	err := s.SeatRepository.UpdateSeat(seatID, scheduleStatus)
+	return err
 }
