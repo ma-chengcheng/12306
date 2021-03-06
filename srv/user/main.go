@@ -15,8 +15,6 @@ import (
 	"strconv"
 )
 
-
-
 func main() {
 	consulConfig, err := common.GetConsulConfig("127.0.0.1", 8500, "/micro/config")
 
@@ -47,6 +45,8 @@ func main() {
 	if err != nil {
 		log.Fatalf("%v", err)
 	}
+
+	//respository.NewUserRepository(db).InitTable()
 
 	userDataService := s.NewUserDataService(respository.NewUserRepository(db))
 

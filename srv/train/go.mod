@@ -5,13 +5,13 @@ go 1.15
 require (
 	github.com/golang/protobuf v1.4.3
 	github.com/micro/go-micro/v2 v2.9.1
-	github.com/micro/go-plugins/registry/consul/v2 v2.9.1 // indirect
+	github.com/micro/go-plugins/registry/consul/v2 v2.9.1
 	github.com/micro/micro/v2 v2.9.3 // indirect
-	github.com/micro/micro/v3 v3.0.0
+	github.com/micro/micro/v3 v3.0.0 // indirect
 	google.golang.org/genproto v0.0.0-20210302174412-5ede27ff9881 // indirect
 	google.golang.org/protobuf v1.25.0
-	gopkg.in/ini.v1 v1.62.0
-	gorm.io/driver/mysql v1.0.3
+	gopkg.in/ini.v1 v1.62.0 // indirect
+	gorm.io/driver/mysql v1.0.3 // indirect
 	gorm.io/gorm v1.20.6
 
 )
