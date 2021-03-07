@@ -4,6 +4,10 @@ services:
     image: consul:latest
     ports:
       - "8500:8500"
+    command: agent -dev -client 0.0.0.0 -data-dir=/consul/data -config-file=/consul/config
+    volumes:
+      - ./database/consul/data:/consul/data
+      - ./database/consul/config:/consul/config
 
   redis:
     image: redis:latest
@@ -31,7 +35,6 @@ services:
 
   rmqnamesrv:
     image: foxiswho/rocketmq:server
-    container_name: rmqnamesrv
     ports:
       - 9876:9876
     volumes:
@@ -44,7 +47,6 @@ services:
 
   rmqbroker:
     image: foxiswho/rocketmq:broker
-    container_name: rmqbroker
     ports:
       - 10909:10909
       - 10911:10911
@@ -66,7 +68,6 @@ services:
 
   rmqconsole:
     image: styletang/rocketmq-console-ng
-    container_name: rmqconsole
     ports:
       - 8080:8080
     environment:

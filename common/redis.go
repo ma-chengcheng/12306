@@ -8,7 +8,7 @@ type RedisConfig struct {
 	Port     int64  `json:"port"`
 }
 
-func GetMysqlRedisConsul(config config.Config, path ...string) *RedisConfig {
+func GetRedisConfigFromConsul(config config.Config, path ...string) *RedisConfig {
 	redisConfig := &RedisConfig{}
 	config.Get(path...).Scan(redisConfig)
 	return redisConfig

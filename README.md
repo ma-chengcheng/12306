@@ -38,3 +38,7 @@ micro/config/redis
     "db":0
 }
 ```
+
+
+
+reduce the mechanical vibrations at the No. 9  steam turbine turbine No. 9  bearing  in the Y-direction.

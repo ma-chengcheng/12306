@@ -10,7 +10,7 @@ type MysqlConfig struct {
 	Port     int64  `json:"port"`
 }
 
-func GetMysqlFromConsul(config config.Config, path ...string) *MysqlConfig {
+func GetMysqlConfigFromConsul(config config.Config, path ...string) *MysqlConfig {
 	mysqlConfig := &MysqlConfig{}
 	config.Get(path...).Scan(mysqlConfig)
 	return mysqlConfig
