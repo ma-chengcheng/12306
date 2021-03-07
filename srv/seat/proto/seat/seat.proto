@@ -1,0 +1,43 @@
+syntax = "proto3";
+
+package seat;
+
+option go_package = "proto;seat";
+
+service Seat {
+  rpc CountRemainingSeats(CountRemainingSeatsRequest) returns (CountRemainingSeatsReply) {}
+  rpc GetSeats(GetSeatsRequest) returns (GetSeatsReply) {}
+  rpc RollbackSeat(RollbackSeatRequest) returns (RollbackSeatReply) {}
+}
+
+message CountRemainingSeatsRequest {
+  fixed32 SeatType = 1;
+  fixed64 TrainID = 2;
+  fixed64 ScheduleStatus = 3;
+}
+
+message CountRemainingSeatsReply {
+  fixed32 Number = 1;
+}
+
+message GetSeatsRequest {
+  fixed32 SeatType = 1;
+  fixed64 ScheduleStatus = 2;
+  fixed32 Number = 3;
+  fixed64 TrainID = 4;
+}
+
+message GetSeatsReply {
+  bool IsSuccess = 1;
+  repeated fixed64 SeatIDs = 2;
+}
+
+
+message RollbackSeatRequest {
+  fixed64 SeatID = 1;
+  fixed64 ScheduleStatus = 2;
+}
+
+message RollbackSeatReply {
+  bool IsSuccess = 1;
+}
