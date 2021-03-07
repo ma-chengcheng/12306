@@ -49,8 +49,7 @@ func (u *SeatRepository) UpdateSeats(number uint32, seats []model.Seat, schedule
 			if len(seatIDs) > int(number) {
 				break
 			}
-
-			t := u.mysqlDB.Model(&model.Seat{}).Where("id = ? AND updated_at = ?", seat.ID, seat.UpdatedAt).Update("seat_status", scheduleStatus|seat.SeatStatus).RowsAffected
+			t := u.mysqlDB.Find(&model.Seat{}, seat.ID).Where("tag = ?", seat.Tag).Update("seat_status", scheduleStatus|seat.SeatStatus).RowsAffected
 			if t > 0 {
 				seatIDs = append(seatIDs, seat.ID)
 			}
@@ -74,13 +73,7 @@ func (u *SeatRepository) UpdateSeat(seatID, scheduleStatus uint64) (err error) {
 	scheduleStatus = ^scheduleStatus
 
 	err = u.mysqlDB.Transaction(func(tx *gorm.DB) error {
-		var seat model.Seat
-		err = u.mysqlDB.Where("id = ?", seatID).First(&seat).Error
-		if err != nil {
-			return err
-		}
-
-		err = u.mysqlDB.Model(&model.Seat{}).Where("train_id = ?", seatID).Update("seat_status", scheduleStatus&seat.SeatStatus).Error
+		err := u.mysqlDB.Find(&model.Seat{}, seatID).Update("seat_status", gorm.Expr("seat_status&?", scheduleStatus)).Error
 		if err != nil {
 			return err
 		}

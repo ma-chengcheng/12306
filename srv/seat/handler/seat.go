@@ -31,5 +31,9 @@ func (s *Seat) GetSeats(ctx context.Context, in *seat.GetSeatsRequest, out *seat
 }
 
 func (s *Seat) RollbackSeat(ctx context.Context, in *seat.RollbackSeatRequest, out *seat.RollbackSeatReply) error {
-	return nil
+	err := s.SeatDataService.ReleaseSeat(in.SeatID, in.ScheduleStatus)
+	if err == nil {
+		out.IsSuccess = true
+	}
+	return err
 }

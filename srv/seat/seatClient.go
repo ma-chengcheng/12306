@@ -6,7 +6,6 @@ import (
 	"github.com/micro/go-micro/v2"
 	"github.com/micro/go-micro/v2/registry"
 	"github.com/micro/go-plugins/registry/consul/v2"
-	"log"
 )
 
 func main() {
@@ -25,21 +24,23 @@ func main() {
 
 	ticketService := goMicroServiceSeat.NewSeatService("go.micro.service.seat", srv.Client())
 
-	countRemainingSeatsReply, _ := ticketService.CountRemainingSeats(context.TODO(), &goMicroServiceSeat.CountRemainingSeatsRequest{
-		SeatType:       0,
-		TrainID:        1,
-		ScheduleStatus: 3,
-	})
+	//countRemainingSeatsReply, _ := ticketService.CountRemainingSeats(context.TODO(), &goMicroServiceSeat.CountRemainingSeatsRequest{
+	//	SeatType:       0,
+	//	TrainID:        1,
+	//	ScheduleStatus: 3,
+	//})
+	//
+	//log.Printf("%v", countRemainingSeatsReply.Number)
+	//
+	//_, err := ticketService.GetSeats(context.TODO(), &goMicroServiceSeat.GetSeatsRequest{
+	//	SeatType:       0,
+	//	ScheduleStatus: 3,
+	//	Number:         1,
+	//	TrainID:        1,
+	//})
+	//
+	//log.Printf("%v", err)
 
-	log.Printf("%v", countRemainingSeatsReply.Number)
-
-	_, err := ticketService.GetSeats(context.TODO(), &goMicroServiceSeat.GetSeatsRequest{
-		SeatType:       1,
-		ScheduleStatus: 3,
-		Number:         1,
-		TrainID:        1,
-	})
-
-	log.Printf("%v", err)
+	ticketService.RollbackSeat(context.TODO(), &goMicroServiceSeat.RollbackSeatRequest{ScheduleStatus: 3, SeatID: 1})
 
 }
