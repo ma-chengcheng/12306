@@ -323,12 +323,10 @@ github.com/liquidweb/liquidweb-go v1.6.0/go.mod h1:UDcVnAMDkZxpw4Y7NOHkqoeiGacVL
 github.com/lucas-clemente/quic-go v0.14.1/go.mod h1:Vn3/Fb0/77b02SGhQk36KzOUmXgVpFfizUfW5WMaqyU=
 github.com/magiconair/properties v1.8.1/go.mod h1:PppfXfuXeibc/6YijjN8zIbojt8czPbwD3XqdrwzmxQ=
 github.com/mamachengcheng/12306 v0.0.2 h1:+pJm6f9qiH8pLIfQchw+35ZOUznPHNz6yez17mfI5pE=
-github.com/mamachengcheng/12306/common v0.0.0-20210303162504-b0e1a3fa8eda h1:YwI3gN8iLHwGl/ejeCgdYm5PGgHbkpt7cskpdaen7hU=
-github.com/mamachengcheng/12306/common v0.0.0-20210303162504-b0e1a3fa8eda/go.mod h1:ixDHH5NeHq4wwttIhCOVhJeRL83Y2f6vm7n9xOYWHgI=
 github.com/mamachengcheng/12306/common v0.0.0-20210304041356-64a3f07123ae h1:TWZ9Jguc51MD1usfWgCFADdM4thC2DL0r55c8Mn68So=
 github.com/mamachengcheng/12306/common v0.0.0-20210304041356-64a3f07123ae/go.mod h1:ixDHH5NeHq4wwttIhCOVhJeRL83Y2f6vm7n9xOYWHgI=
-github.com/mamachengcheng/12306/srv/seat v0.0.0-20210307065937-5824c8c4d394 h1:F1SkDaaLXhg40wAOvB2ZBajCEtE4O37d/m3SzLrO+zw=
-github.com/mamachengcheng/12306/srv/seat v0.0.0-20210307065937-5824c8c4d394/go.mod h1:W58IyzXZsIxpjzDuJNjivsUAeOa7PVP9Ftb68Lz3j2c=
+github.com/mamachengcheng/12306/srv/seat v0.0.0-20210307072655-2a49a5650ef7 h1:LPXVxBJaP9Ox+Hk51lhoqnJD1oiDU3pk0Z2+kr9V+tY=
+github.com/mamachengcheng/12306/srv/seat v0.0.0-20210307072655-2a49a5650ef7/go.mod h1:W58IyzXZsIxpjzDuJNjivsUAeOa7PVP9Ftb68Lz3j2c=
 github.com/marten-seemann/chacha20 v0.2.0/go.mod h1:HSdjFau7GzYRj+ahFNwsO3ouVJr1HFkWoEwNDb4TMtE=
 github.com/marten-seemann/qpack v0.1.0/go.mod h1:LFt1NU/Ptjip0C2CPkhimBz5CGE3WGDAUWqna+CNTrI=
 github.com/marten-seemann/qtls v0.4.1/go.mod h1:pxVXcHHw1pNIt8Qo0pwSYQEoZ8yYOOPXTCZLQQunvRc=
@@ -712,8 +710,6 @@ google.golang.org/genproto v0.0.0-20190911173649-1774047e7e51/go.mod h1:IbNlFCBr
 google.golang.org/genproto v0.0.0-20191216164720-4f79533eabd1/go.mod h1:n3cpQtvxv34hfy77yVDNjmbRyujviMdxYliBSkLhpCc=
 google.golang.org/genproto v0.0.0-20200526211855-cb27e3aa2013 h1:+kGHl1aib/qcwaRi1CbqBZ1rk19r85MNUf8HaBghugY=
 google.golang.org/genproto v0.0.0-20200526211855-cb27e3aa2013/go.mod h1:NbSheEEYHJ7i3ixzK3sjbqSGDJWnxyFXZblF3eUsNvo=
-google.golang.org/genproto v0.0.0-20210302174412-5ede27ff9881 h1:SYuy3hIRsBIROE0aZwsJZOEJNC/n9/p0FmLEU9C31AE=
-google.golang.org/genproto v0.0.0-20210302174412-5ede27ff9881/go.mod h1:FWY/as6DDZQgahTzZj3fqbO1CbirC29ZNUFHwi0/+no=
 google.golang.org/genproto v0.0.0-20210303154014-9728d6b83eeb h1:hcskBH5qZCOa7WpTUFUFvoebnSFZBYpjykLtjIp9DVk=
 google.golang.org/genproto v0.0.0-20210303154014-9728d6b83eeb/go.mod h1:FWY/as6DDZQgahTzZj3fqbO1CbirC29ZNUFHwi0/+no=
 google.golang.org/grpc v1.26.0 h1:2dTRdpdFEEhJYQD8EMLB61nnrzSCTbG38PhqdhvOltg=
@@ -762,8 +758,6 @@ gopkg.in/yaml.v3 v3.0.0-20200313102051-9f266ea9e77c/go.mod h1:K4uyk7z7BCEPqu6E+C
 gorm.io/driver/mysql v1.0.3 h1:+JKBYPfn1tygR1/of/Fh2T8iwuVwzt+PEJmKaXzMQXg=
 gorm.io/driver/mysql v1.0.3/go.mod h1:twGxftLBlFgNVNakL7F+P/x9oYqoymG3YYT8cAfI9oI=
 gorm.io/gorm v1.20.4/go.mod h1:0HFTzE/SqkGTzK6TlDPPQbAYCluiVvhzoA1+aVyzenw=
-gorm.io/gorm v1.20.12 h1:ebZ5KrSHzet+sqOCVdH9mTjW91L298nX3v5lVxAzSUY=
-gorm.io/gorm v1.20.12/go.mod h1:0HFTzE/SqkGTzK6TlDPPQbAYCluiVvhzoA1+aVyzenw=
 gorm.io/gorm v1.21.2 h1:E9FgSzS9qZneyf5MlXTJBYEZ2ZZKrB993s2v+XBu7vo=
 gorm.io/gorm v1.21.2/go.mod h1:0HFTzE/SqkGTzK6TlDPPQbAYCluiVvhzoA1+aVyzenw=
 gotest.tools v2.2.0+incompatible/go.mod h1:DsYFclhRJ6vuDpmuTbkuFWG+y2sxOXAzmJt81HFBacw=

@@ -10,7 +10,7 @@ require (
 	github.com/json-iterator/go v1.1.10 // indirect
 	github.com/kr/pretty v0.2.0 // indirect
 	github.com/mamachengcheng/12306/common v0.0.0-20210304041356-64a3f07123ae
-	github.com/mamachengcheng/12306/srv/seat v0.0.0-20210307065937-5824c8c4d394 // indirect
+	github.com/mamachengcheng/12306/srv/seat v0.0.0-20210307072655-2a49a5650ef7 // indirect
 	github.com/micro/go-micro/v2 v2.9.1
 	github.com/micro/go-plugins/registry/consul/v2 v2.9.1
 	github.com/stretchr/testify v1.6.1 // indirect

@@ -31,16 +31,6 @@ type Schedule struct {
 	TrainRefer uint
 }
 
-type Seat struct {
-	ID int64 `gorm:"primary_key;not_null;auto_increment"`
-	SeatNo     string `gorm:"not null" json:"seat_no"`
-	CarNumber  uint   `gorm:"not null" json:"car_number"`
-	SeatType   uint   `gorm:"not null" json:"seat_type"`
-	SeatStatus uint64 `gorm:"not null" json:"seat_status"`
-
-	TrainRefer uint
-}
-
 type Stop struct {
 	ID int64 `gorm:"primary_key;not_null;auto_increment"`
 	No int64 `gorm:"not null" json:"no"`
@@ -59,5 +49,4 @@ type Train struct {
 	ID int64 `gorm:"primary_key;not_null;auto_increment"`
 	Schedules []Schedule `gorm:"foreignKey:TrainRefer" json:"schedules"` // Has Many Schedules
 	Stops     []Stop     `gorm:"foreignKey:TrainRefer" json:"stops"`     // Has Many Stops
-	Seats     []Seat     `gorm:"foreignKey:TrainRefer" json:"seats"`     // Has Many Seats
 }
