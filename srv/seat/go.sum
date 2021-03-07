@@ -304,6 +304,7 @@ github.com/lucas-clemente/quic-go v0.14.1/go.mod h1:Vn3/Fb0/77b02SGhQk36KzOUmXgV
 github.com/magiconair/properties v1.8.1/go.mod h1:PppfXfuXeibc/6YijjN8zIbojt8czPbwD3XqdrwzmxQ=
 github.com/mamachengcheng/12306/common v0.0.0-20210304041356-64a3f07123ae h1:TWZ9Jguc51MD1usfWgCFADdM4thC2DL0r55c8Mn68So=
 github.com/mamachengcheng/12306/common v0.0.0-20210304041356-64a3f07123ae/go.mod h1:ixDHH5NeHq4wwttIhCOVhJeRL83Y2f6vm7n9xOYWHgI=
+github.com/mamachengcheng/12306/srv/seat v0.0.0-20210307065937-5824c8c4d394/go.mod h1:W58IyzXZsIxpjzDuJNjivsUAeOa7PVP9Ftb68Lz3j2c=
 github.com/marten-seemann/chacha20 v0.2.0/go.mod h1:HSdjFau7GzYRj+ahFNwsO3ouVJr1HFkWoEwNDb4TMtE=
 github.com/marten-seemann/qpack v0.1.0/go.mod h1:LFt1NU/Ptjip0C2CPkhimBz5CGE3WGDAUWqna+CNTrI=
 github.com/marten-seemann/qtls v0.4.1/go.mod h1:pxVXcHHw1pNIt8Qo0pwSYQEoZ8yYOOPXTCZLQQunvRc=
