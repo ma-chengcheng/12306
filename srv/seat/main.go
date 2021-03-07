@@ -2,10 +2,10 @@ package main
 
 import (
 	"github.com/mamachengcheng/12306/common"
-	"github.com/mamachengcheng/12306/srv/train/domain/respository"
-	s "github.com/mamachengcheng/12306/srv/train/domain/service"
-	"github.com/mamachengcheng/12306/srv/train/handler"
-	train "github.com/mamachengcheng/12306/srv/train/proto/train"
+	"github.com/mamachengcheng/12306/srv/seat/domain/respository"
+	s "github.com/mamachengcheng/12306/srv/seat/domain/service"
+	"github.com/mamachengcheng/12306/srv/seat/handler"
+	seat "github.com/mamachengcheng/12306/srv/seat/proto/seat"
 	"github.com/micro/go-micro/v2"
 	"github.com/micro/go-micro/v2/registry"
 	"github.com/micro/go-plugins/registry/consul/v2"
@@ -30,7 +30,7 @@ func main() {
 
 	// Create service
 	srv := micro.NewService(
-		micro.Name("go.micro.service.train"),
+		micro.Name("go.micro.service.seat"),
 		micro.Version("latest"),
 		micro.Registry(consulRegistry),
 	)
@@ -46,14 +46,14 @@ func main() {
 		log.Fatalf("%v", err)
 	}
 
-	ticketDataService := s.NewTrainDataService(respository.NewTrainRepository(db))
+	respository.NewSeatRepository(db).InitTable()
+	seatDataService := s.NewSeatDataService(respository.NewSeatRepository(db))
 
 	// Register handler
-
-	train.RegisterTrainHandler(srv.Server(), &handler.Train{TrainDataService: ticketDataService})
+	err = seat.RegisterSeatHandler(srv.Server(), &handler.Seat{SeatDataService: seatDataService})
 
 	// Run service
 	if err := srv.Run(); err != nil {
-		log.Fatalf("Open MySQL database: %v", err)
+		log.Fatalf("%v", err)
 	}
 }
