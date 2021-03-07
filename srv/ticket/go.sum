@@ -327,6 +327,8 @@ github.com/mamachengcheng/12306/common v0.0.0-20210304041356-64a3f07123ae h1:TWZ
 github.com/mamachengcheng/12306/common v0.0.0-20210304041356-64a3f07123ae/go.mod h1:ixDHH5NeHq4wwttIhCOVhJeRL83Y2f6vm7n9xOYWHgI=
 github.com/mamachengcheng/12306/srv/seat v0.0.0-20210307072655-2a49a5650ef7 h1:LPXVxBJaP9Ox+Hk51lhoqnJD1oiDU3pk0Z2+kr9V+tY=
 github.com/mamachengcheng/12306/srv/seat v0.0.0-20210307072655-2a49a5650ef7/go.mod h1:W58IyzXZsIxpjzDuJNjivsUAeOa7PVP9Ftb68Lz3j2c=
+github.com/mamachengcheng/12306/srv/seat v0.0.0-20210307083132-1e74096a78e7 h1:P3EJNEq4AR6WCFuusA63AMyGE7hb6bZh731mtsQ8QA8=
+github.com/mamachengcheng/12306/srv/seat v0.0.0-20210307083132-1e74096a78e7/go.mod h1:W58IyzXZsIxpjzDuJNjivsUAeOa7PVP9Ftb68Lz3j2c=
 github.com/marten-seemann/chacha20 v0.2.0/go.mod h1:HSdjFau7GzYRj+ahFNwsO3ouVJr1HFkWoEwNDb4TMtE=
 github.com/marten-seemann/qpack v0.1.0/go.mod h1:LFt1NU/Ptjip0C2CPkhimBz5CGE3WGDAUWqna+CNTrI=
 github.com/marten-seemann/qtls v0.4.1/go.mod h1:pxVXcHHw1pNIt8Qo0pwSYQEoZ8yYOOPXTCZLQQunvRc=

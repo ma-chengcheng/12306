@@ -9,7 +9,6 @@ require (
 	github.com/gorilla/websocket v1.4.2 // indirect
 	github.com/json-iterator/go v1.1.10 // indirect
 	github.com/kr/pretty v0.2.0 // indirect
-	github.com/mamachengcheng/12306/common v0.0.0-20210304041356-64a3f07123ae // indirect
 	github.com/micro/go-micro/v2 v2.9.1
 	github.com/micro/go-plugins/registry/consul/v2 v2.9.1
 	github.com/stretchr/testify v1.6.1 // indirect
