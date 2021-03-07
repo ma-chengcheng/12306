@@ -5,7 +5,7 @@ import (
 	"github.com/mamachengcheng/12306/srv/ticket/domain/respository"
 	s "github.com/mamachengcheng/12306/srv/ticket/domain/service"
 	"github.com/mamachengcheng/12306/srv/ticket/handler"
-	ticket2 "github.com/mamachengcheng/12306/srv/ticket/proto/ticket"
+	"github.com/mamachengcheng/12306/srv/ticket/proto/ticket"
 	"github.com/micro/go-micro/v2"
 	"github.com/micro/go-micro/v2/registry"
 	"github.com/micro/go-plugins/registry/consul/v2"
@@ -46,11 +46,12 @@ func main() {
 		log.Fatalf("%v", err)
 	}
 
+	respository.NewTicketRepository(db).InitTable()
 	ticketDataService := s.NewTicketDataService(respository.NewTicketRepository(db))
 
 	// Register handler
 
-	ticket2.RegisterTicketHandler(srv.Server(), &handler.Ticket{TicketDataService: ticketDataService})
+	ticket.RegisterTicketHandler(srv.Server(), &handler.Ticket{TicketDataService: ticketDataService})
 
 	// Run service
 	if err := srv.Run(); err != nil {
