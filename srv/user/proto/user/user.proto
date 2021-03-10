@@ -56,7 +56,6 @@ message QueryUserInformationReply {
 	string MobilePhone = 10;
 	int64 CheckStatus = 11;
 	int64 UserStatus = 12;
-	int64 UserID = 13;
 }
 
 message UpdatePasswordRequest {
@@ -91,8 +90,7 @@ message Passenger {
 	string Certificate = 3;
 	string PassengerType = 4;
 	string CheckStatus = 5;
-	string CreateDate = 6;
-	string MobilePhone = 7;
+	string MobilePhone = 6;
 }
 
 message QueryRegularPassengersReply {

@@ -26,8 +26,8 @@ func TestCountRemainingSeats(t *testing.T) {
 	ticketService := goMicroServiceSeat.NewSeatService("go.micro.service.seat", srv.Client())
 
 	cuntRemainingSeatsReply, err := ticketService.CountRemainingSeats(context.TODO(), &goMicroServiceSeat.CountRemainingSeatsRequest{
-		SeatType:       0,
-		TrainID:        0,
+		SeatType:       3,
+		TrainID:        1,
 		ScheduleStatus: 0,
 	})
 	if err != nil {

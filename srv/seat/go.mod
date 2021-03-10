@@ -4,10 +4,9 @@ go 1.15
 
 require (
 	github.com/golang/protobuf v1.4.2
-	github.com/mamachengcheng/12306/common v0.0.0-20210307085058-90cd34547f22 // indirect
+	github.com/mamachengcheng/12306/common v0.0.0-20210307085058-90cd34547f22
 	github.com/micro/go-micro/v2 v2.9.1
 	github.com/micro/go-plugins/registry/consul/v2 v2.9.1
-	github.com/smartystreets/goconvey v1.6.4
 	google.golang.org/genproto v0.0.0-20210303154014-9728d6b83eeb // indirect
 	google.golang.org/protobuf v1.24.0
 	gorm.io/driver/mysql v1.0.3

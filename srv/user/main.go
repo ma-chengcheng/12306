@@ -5,7 +5,7 @@ import (
 	"github.com/mamachengcheng/12306/srv/user/domain/respository"
 	s "github.com/mamachengcheng/12306/srv/user/domain/service"
 	"github.com/mamachengcheng/12306/srv/user/handler"
-	user2 "github.com/mamachengcheng/12306/srv/user/proto/user"
+	user "github.com/mamachengcheng/12306/srv/user/proto/user"
 	"github.com/micro/go-micro/v2"
 	"github.com/micro/go-micro/v2/registry"
 	"github.com/micro/go-plugins/registry/consul/v2"
@@ -51,7 +51,7 @@ func main() {
 	userDataService := s.NewUserDataService(respository.NewUserRepository(db))
 
 	// Register handler
-	user2.RegisterUserHandler(srv.Server(), &handler.User{UserDataService: userDataService})
+	user.RegisterUserHandler(srv.Server(), &handler.User{UserDataService: userDataService})
 
 	// Run service
 	if err := srv.Run(); err != nil {
